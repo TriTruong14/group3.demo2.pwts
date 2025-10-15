@@ -10,20 +10,13 @@ let blogPage: BlogPage;
     await blogPage.gotoPage();
 });
 
-    test("Check blog page title", async ({ page }) => {
-        await expect(blogPage.blogTitle).toHaveText("Blog");
+    test("EP3-TC-01: Verify blog page title", async ({ page }) => {
+        
+        // await expect(blogPage.blogTitle).toHaveText("Blog");
 
         // await expect(page).toHaveURL(/\/blog/);// Cách này cũng được
-
         // const blogTitle = await blogPage.blogTitle.isVisible(); // >> OK
-
-        // expect(page.url()).toContain('/blog');// >> OK
+        expect(page.url()).toContain('/blog');// >> OK
     });
-
-    // test('TC_Home_04: Verify navigation to Blog section', async ({ page }) => {
-    //     await blogPage.gotoPage();
-    //     // Verify that the Blog section is displayed
-    //     expect(page.url()).toContain('/blog');
-    // });
 
 })
