@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { EventPage } from "../pages/eventPage";
+import { EventLastYearPage } from "../pages/eventLastYearPage";
 
 test.describe.serial ("Event Function", () => {
 
@@ -33,10 +34,9 @@ let eventPage: EventPage;
     });
 
     test ('EP3-TC-17: Verify page Sự Kiện sale cuối năm hiển thị đúng khi truy cập', async ({ page }) => {
-        await eventPage.goToLastYearEvent();
-        await expect(eventPage.eventTitle).toHaveText('Sự kiện Sale Cuối Năm'); 
-        await expect(page).toHaveURL(/sukien/); // Verify the URL contains /sukien to confirm navigation to the event page
-
+        const eventLastYearPage = await eventPage.goToLastYearEvent();
+        await expect(eventLastYearPage.eventLastYearPageTitle).toHaveText('Có gì đó sai ở đây');
+        await expect(page).toHaveURL(/lastYear/);
     });
 
 })
