@@ -34,9 +34,15 @@ let eventPage: EventPage;
     });
 
     test ('EP3-TC-17: Verify page Sự Kiện sale cuối năm hiển thị đúng khi truy cập', async ({ page }) => {
-        const eventLastYearPage = await eventPage.goToLastYearEvent();
-        await expect(eventLastYearPage.eventLastYearPageTitle).toHaveText('Có gì đó sai ở đây');
-        await expect(page).toHaveURL(/lastYear/);
+        const eventLastYearPage = await eventPage.goToLastYearEvent(); // Navigate to the Sự kiện sale cuối năm page
+        await expect(eventLastYearPage.eventLastYearPageTitle).toHaveText('Có gì đó sai ở đây'); // Verify the Sự kiện sale cuối năm page title is correct
+        await expect(page).toHaveURL(/lastYear/); //
+    });
+
+    test ('EP3-TC-18: Verify page Sự Kiện Giáng Sinh hiển thị đúng khi truy cập', async ({ page }) => {
+        const eventChristmasPage = await eventPage.goToChristmasEvent(); // Navigate to the Sự kiện Giáng Sinh page
+        await expect(eventChristmasPage.christmasEventPageTitle).toHaveText('Có gì đó sai ở đây'); // Verify the Sự kiện Giáng Sinh page title is correct
+        await expect(page).toHaveURL(/Noel/); // Verify the URL contains /Noel to confirm navigation to the Sự kiện Giáng Sinh page
     });
 
 })

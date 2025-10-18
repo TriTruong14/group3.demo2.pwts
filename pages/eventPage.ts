@@ -1,17 +1,20 @@
 import { Page } from "@playwright/test";
 import { BasePage } from "./basePage";
 import { EventLastYearPage } from "./eventLastYearPage";
+import { EventChristmasPage } from "./eventChristmasPage";
 
 export class EventPage extends BasePage {
   readonly eventTitle; // Locator for the event page title
   readonly menuEvent; // Locator for the submenu of the Su kiện page
   readonly eventLastYear; // Locator for the link to Sự kiện sale cuối năm
+  readonly eventChristmas; // Locator for the link to Sự kiện Giáng sinh
 
   constructor(page: Page) {
     super(page); // Call the constructor of the BasePage class
     this.eventTitle = page.locator("(//h4[normalize-space()='Sự kiện công nghệ lớn nhất 2021'])");
     this.menuEvent = page.locator("(//a[@class='active'][contains(text(),'Sự kiện')])[1]");
     this.eventLastYear = page.locator("(//a[contains(text(),'Sự kiện Sale Cuối Năm')])[1]");
+    this.eventChristmas = page.locator("(//a[contains(text(),'Sự kiện Giáng sinh')])[1]");
   }
 
     async gotoPage() {
@@ -34,5 +37,14 @@ export class EventPage extends BasePage {
       const eventLastYearPage = new EventLastYearPage(this.page);
       await eventLastYearPage.verifyloaded(); // Verify the event last year page is loaded
       return eventLastYearPage;
+    }
+
+    async goToChristmasEvent(): Promise<any> {
+      await this.menuEvent.hover(); // Hover on the Sự kiện menu to reveal the submenu
+      await this.eventChristmas.click(); // Click on the Sự kiện Giáng sinh link
+
+      const eventChristmasPage = new EventChristmasPage(this.page);
+      await eventChristmasPage.verifyloaded(); // Verify the Christmas event page is loaded
+      return eventChristmasPage;
     }
 }
