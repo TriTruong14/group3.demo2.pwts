@@ -2,41 +2,7 @@ import { Locator, Page } from '@playwright/test';
 import * as dotenv from 'dotenv';
 dotenv.config(); // Load biến môi trường từ file .env
 import { USERNAME, PASSWORD, BASE_URL } from '../utils/utils';
-// const USERNAME = process.env.USERNAME || "";
-// const PASSWORD = process.env.PASSWORD || "";
 
-// export class LoginPage {
-//     readonly page: Page;
-//     readonly errorMessage: Locator;
-//     readonly username: Locator;
-//     readonly password: Locator;
-//     readonly loginButton: Locator;
-
-//     constructor(page: Page) {
-//         this.page = page;
-//         this.errorMessage = page.locator('.error-message');
-//         this.username = page.locator('form.formLoginUser >> input[name="taiKhoan"]');
-//         this.password = page.locator('form.formLoginUser >> input[name="matKhau"]');
-//         this.loginButton = page.locator('form.formLoginUser button[type="submit"]');
-//     }
-
-//     async gotoPage() {
-//         const url = process.env.BASE_URL;
-//         if (!url) throw new Error('BASE_URL is not set in .env');
-//         await this.page.goto(url);
-        
-//         // await this.page.goto(process.env.BASE_URL || ""); // Sử dụng biến môi trường baseURL từ file .env
-//     }
-
-//     async login(username: string=USERNAME, password: string=PASSWORD) {
-//        await this.username.fill(username);
-//        await this.password.fill(password);
-//        await this.loginButton.click();
-//     }
-//     getErrorMessage(): Locator {
-//         return this.errorMessage
-//     }
-// }
 
 export class LoginPage {
   //thuoc tinh login page

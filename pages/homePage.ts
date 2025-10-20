@@ -70,4 +70,6 @@ export class HomePage {
     //click logo to go to home page
     async logoClick(): Promise<void> {
         await this.textLogoMenu.click();        
-  }}
+  }
+
+}
