@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Trang khóa học – Phân trang tại CyberSoft', () => {
 
-  test('Kiểm tra đang ở trang 2', async ({ page }) => {
+  test('Kiểm tra click trang 2', async ({ page }) => {
   await page.goto('https://demo2.cybersoft.edu.vn/khoahoc');
 
   // Click vào trang 2
@@ -13,7 +13,7 @@ test.describe('Trang khóa học – Phân trang tại CyberSoft', () => {
   await expect(currentPage2).toBeVisible();
 });
 
-  test('Kiểm tra đang ở trang sau', async ({ page }) => {
+  test('Kiểm tra click Next button', async ({ page }) => {
   await page.goto('https://demo2.cybersoft.edu.vn/khoahoc');
 
   // Click nút Next page
@@ -26,10 +26,10 @@ test.describe('Trang khóa học – Phân trang tại CyberSoft', () => {
   await expect(currentPage2).toBeVisible();
 });
 
-test('Kiểm tra đang ở trang trước', async ({ page }) => {
+test('Kiểm tra click Previous button', async ({ page }) => {
   await page.goto('https://demo2.cybersoft.edu.vn/khoahoc');
 
-// Click vào trang 4
+// Click vào trang 3
   await page.locator('a.pageLinkPages[aria-label="Page 3"]').click();
 
   // Click nút Previous page
