@@ -11,4 +11,33 @@ test.describe('Trang khóa học – Phân trang tại CyberSoft', () => {
   // Kiểm tra đã chuyển sang trang 2
   const currentPage2 = page.locator('a.pageLinkPages[aria-current="page"][aria-label*="Page 2"]');
   await expect(currentPage2).toBeVisible();
+});
+
+  test('Kiểm tra đang ở trang sau', async ({ page }) => {
+  await page.goto('https://demo2.cybersoft.edu.vn/khoahoc');
+
+  // Click nút Next page
+  const nextButton = page.locator('a.pageLinkPages[aria-label="Next page"]');
+  await expect(nextButton).toBeVisible();
+  await nextButton.click();
+
+  // Kiểm tra đã chuyển sang trang 2
+  const currentPage2 = page.locator('a.pageLinkPages[aria-current="page"][aria-label*="Page 2"]');
+  await expect(currentPage2).toBeVisible();
+});
+
+test('Kiểm tra đang ở trang trước', async ({ page }) => {
+  await page.goto('https://demo2.cybersoft.edu.vn/khoahoc');
+
+// Click vào trang 4
+  await page.locator('a.pageLinkPages[aria-label="Page 3"]').click();
+
+  // Click nút Previous page
+  const previousButton = page.locator('a.pageLinkPages[aria-label="Previous page"]');
+  await expect(previousButton).toBeVisible();
+  await previousButton.click();
+
+  // Kiểm tra đã chuyển về trang 2
+  const currentPage2 = page.locator('a.pageLinkPages[aria-current="page"][aria-label*="Page 2"]');
+  await expect(currentPage2).toBeVisible();
 });})
