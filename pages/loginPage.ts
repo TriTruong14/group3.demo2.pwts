@@ -37,12 +37,19 @@ export class LoginPage {
 
     async login(username: string = USERNAME, password: string = PASSWORD) {
         await this.openLoginPage();
-        await this.usernameInput.fill(USERNAME);
-        await this.passwordInput.fill(PASSWORD);
+        await this.usernameInput.fill(username);
+        await this.passwordInput.fill(password);
         await this.loginButton.click();
     }
 
     async getErrorMessage(): Promise<string | null> {
         return await this.swalTitle.textContent();
     }
+
+    async verifyFailLogin() {
+        const warningPopup = this.page.locator(".swal-title");
+        await expect(warningPopup).toBeVisible({ timeout: 10000 });
+        await expect(warningPopup).toHaveText("Tài khoản hoặc mật khẩu không đúng!");
+    }
+
 }

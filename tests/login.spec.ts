@@ -34,21 +34,21 @@ test.describe("TEST FUNCTION ĐĂNG NHẬP", ()=>{
     });
     test("EP5_TC28: Tài khoản mật khẩu rỗng", async ({page})=>{
         await loginPage.login("","");
-        await expect(loginPage.swalText).toBeTruthy();
+        await loginPage.verifyFailLogin();
         // await expect(page.locator(".swal-text")).toBeTruthy();
     });
     test("EP5_TC29: Đăng nhập lỗi khi tài khoản và mật khẩu sai", async ({page})=>{
         await loginPage.login(WRONG_US, WRONG_PW);                
-        await expect(loginPage.swalText).toBeTruthy();
+        await loginPage.verifyFailLogin();
     });
     
     test("EP5_TC30: Đăng nhập lỗi khi tài khoản sai", async ({page})=>{
         await loginPage.login(WRONG_US, PASSWORD);                
-        await expect(loginPage.swalText).toBeTruthy();
+        await loginPage.verifyFailLogin();
     });
         test("EP5_TC31: Đăng nhập lỗi khi mật khẩu sai", async ({page})=>{
         await loginPage.login(USERNAME, WRONG_PW);                
-        await expect(loginPage.swalText).toBeTruthy();
+        await loginPage.verifyFailLogin();
     });
 
 })
